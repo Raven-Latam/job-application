@@ -1,0 +1,192 @@
+.filters-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 20px 0;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .filters-container {
+    display: grid;
+    justify-content: normal;
+    gap: 5px;
+    margin: 0px 0;
+  }
+  select.filter-select {
+    padding: 6px 15px!important;
+  }
+}
+  
+  select.filter-select {
+    background-color: #f5f6f8;
+    border: none;
+    padding: 10px 15px;
+    font-family: var(--font-space-grotesk), sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  .filter-select:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .filter-select:focus {
+    border: 1px solid #000;
+  }
+  .clear-filter {
+    background: #3F3F54;
+    color: #fff;
+    border-radius: 5px;
+    font-family: var(--font-space-grotesk), sans-serif;
+    text-transform: uppercase;
+    border: none;
+  }
+
+h3.title-vertical {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 500; /* Medium */
+  text-transform: uppercase;
+  font-size: 24px;
+  margin-bottom: 10px;
+  padding: 20px 0px 20px 0px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+h1.job-title {
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+h2.job-title {
+  font-family: var(--font-manrope), sans-serif;
+}
+p.job-title {
+  font-family: var(--font-manrope), sans-serif;
+  font-weight: 700; /* Bold */
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+p.job-meta {
+  font-family: var(--font-manrope), sans-serif;
+  font-weight: 400; /* Regular */
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.job-button {
+  background-color: #3F3F54;
+  color: #fff;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  border: none;
+}
+/* Hover por vertical */
+.hover-tecnología:hover {
+  background-color: #FF5100;
+}
+
+.hover-growth:hover {
+  background-color: #00DBFF;
+}
+
+.hover-wings:hover {
+  background-color: #FFF30B;
+  color: black; /* color negro porque el fondo es muy claro */
+}
+
+.hover-experience:hover {
+  background-color: #FF00D5;
+}
+
+.hover-business:hover {
+  background-color: #00ff16;
+  color: black; /* color negro porque el fondo es muy claro */
+}
+label.form-title {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+button.button-send {
+  background-color: #3F3F54;
+  color: rgb(255, 255, 255);
+  padding: 15px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-family: var(--font-space-grotesk), sans-serif;
+  text-transform: uppercase;
+}
+select#location {
+  font-family: var(--font-manrope), sans-serif;
+}
+input#resume {
+  font-family: var(--font-manrope), sans-serif;
+}
+
+label.label-file {
+  display: inline-block;
+  padding: 10px 0px;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgb(245, 245, 245);
+  font-family: var(--font-manrope);
+  width: 100%;
+  font-size: 13px;
+}
+
+span.file-alert {
+  margin-left: 10px;
+  font-size: 10px;
+  font-family: var(--font-manrope);
+}
+.margin-inputs {
+  margin-bottom: 15px;
+}
+
+.inputs-form { 
+  width: 100%; 
+  padding: 10px 0px;
+  border-radius: 5px; 
+  border: 1px solid #ccc;
+}
+.line {
+  border: 1px solid #ddd; 
+  margin-bottom: 20px;
+}
+.job-container {
+  max-width: 800px; 
+  margin: 20px auto; 
+  padding: 20px;
+}
+.file-hide {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+.vertical-icon {
+  width: 24px; 
+  height: 24px;
+} 
+.job-offer {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 20px;
+}
+.vertical-margin {
+  margin-bottom: 40px;
+}

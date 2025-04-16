@@ -1,0 +1,49 @@
+{
+    "jobs": [
+      {
+        "id": 1,
+        "title": "Desarrollador Frontend",
+        "description": "Buscamos un desarrollador con experiencia en React.",
+        "vertical": "Tecnología",
+        "location": "Santiago",
+        "workMode": "Hybrid",
+        "jobType": "Part-time"
+      },
+      {
+        "id": 2,
+        "title": "Analista de Datos",
+        "description": "Se requiere analista con experiencia en SQL y Python.",
+        "vertical": "Tecnología",
+        "location": "Ciudad de México",
+        "workMode": "Remote",
+        "jobType": "Full-time"
+      },
+      {
+        "id": 3,
+        "title": "Desarrollador Backend",
+        "description": "We are Raven, a unique blend of consulting, creative and technology capabilities united with a single focus: We ideate, build, and launch new value propositions that materialize our clients' potential. Our unique approach underpins the creation of emerging propositions capable of generating or capturing new value.\n We untap New Horizons. In a world that faces unprecedented challenges both from a business and market dynamics, with the increasing demand of an evolving customer and collaborator, we are the wingman of our clients to cope with their growth challenges. \n Just for a Few. We support leaders and market creators to innovate commercial disruptions and accelerate growth, combining strategy, design, innovation, and technology. Many organizations preach the same promise, but only a few delivers on it. We are among those. \n Global Reach. Since our inception, we have developed projects with top-tier organizations throughout Latin America and Europe. We are currently expanding beyond. \n We are not a consulting Company. We work differently from traditional consultants. We are not another consulting boutique, nor we want to be. We are fast and agile as a start-up, but precise and narrow focus on delivering value to our clients.  \n For you. We support your professional and personal development. We provide freedom to develop and a unique work environment that rewards each member of our team professionally and personally. Our Verticals. We organize across four business lines: Business, Experience, Growth and Tech. These business lines create a seamless and yet synergetic value proposition for our clients. We Think to Design. We build to Sell. This is what we do, we conceive unique value propositions that then we take to market.",
+        "vertical": "Tecnología",
+        "location": "Santiago",
+        "workMode": "Hybrid",
+        "jobType": "Full-time"
+      },
+      {
+        "id": 4,
+        "title": "Data Science JR",
+        "description": "Se requiere analista con experiencia en SQL y Python.",
+        "vertical": "Growth",
+        "location": "Ciudad de México",
+        "workMode": "Remote",
+        "jobType": "Full-time"
+      },
+      {
+        "id": 5,
+        "title": "Talent Pool Wings",
+        "description": "Se requiere analista con experiencia en CM, UX/UI",
+        "vertical": "Wings",
+        "location": "Santiago",
+        "workMode": "Remote",
+        "jobType": "Full-time"
+      }
+    ]
+}
