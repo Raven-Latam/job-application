@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { getJobOffers } from '../services/api';
 import { Job } from '../types/job';
 import Logo from './Logo';
@@ -129,12 +130,12 @@ const JobList = () => {
                 <p className="job-meta">{job.workMode} | {job.jobType}</p>
                 <p className="job-meta">{job.location}</p>
               </div>
-              <a
+              <Link
                 href={`/jobs/${job.id}`}
                 className={`job-button hover-${vertical.toLowerCase()}`}
               >
                 APPLY
-              </a>
+              </Link>
             </div>
           ))}
         </div>
