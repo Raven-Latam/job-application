@@ -11,7 +11,6 @@ type Props = {
 
 const JobDetail = ({ id }: Props) => {
   const router = useRouter();
-  
   const [job, setJob] = useState<Job | null>(null);
 
   useEffect(() => {
@@ -22,17 +21,9 @@ const JobDetail = ({ id }: Props) => {
       });
     }
   }, [id]);
-  
-  
-
-  if (!job) {
-    return <div>Cargando trabajo...</div>;
-  }
-
-  const formattedDescription = job.description.replace(/\n/g, '<br />');
 
   const getButtonClassName = () => {
-    if (!job) return "job-button"; 
+    if (!job) return 'job-button'; 
 
     switch (job.vertical) {
       case 'Tecnología':
@@ -50,6 +41,13 @@ const JobDetail = ({ id }: Props) => {
     }
   };
 
+  if (!job) {
+    return <div>Cargando trabajo...</div>;
+  }
+
+  // Solo format aboutUs
+  const formattedAboutUs = job.description?.aboutUs?.replace(/\n/g, '<br />');
+
   return (
     <div className='job-container'>
       <Logo />
@@ -63,9 +61,31 @@ const JobDetail = ({ id }: Props) => {
       <p className="job-meta">{job.location}</p>
       <p className="job-meta">{job.workMode} | {job.jobType}</p>
       <hr className='line' />
+
       <div>
         <h2 className="job-title">About us</h2>
-        <p className="job-meta" dangerouslySetInnerHTML={{ __html: formattedDescription }} />
+        <p
+          className="job-meta"
+          dangerouslySetInnerHTML={{ __html: formattedAboutUs || '' }}
+        />
+
+        <h2 className="job-title">About you</h2>
+        <p className="job-meta">{job.description?.aboutYou}</p>
+
+        <h2 className="job-title">Our work place</h2>
+        <p className="job-meta">{job.description?.ourWorkPlace}</p>
+
+        <h2 className="job-title">Our benefits</h2>
+        <p className="job-meta">{job.description?.ourBenefits}</p>
+
+        <h2 className="job-title">Tu rol</h2>
+        <p className="job-meta">{job.description?.yourRole}</p>
+
+        <h2 className="job-title">Responsabilidades</h2>
+        <p className="job-meta">{job.description?.responsibilities}</p>
+
+        <h2 className="job-title">Habilidades y experiencia</h2>
+        <p className="job-meta">{job.description?.skillsAndExperience}</p>
       </div>
     </div>
   );

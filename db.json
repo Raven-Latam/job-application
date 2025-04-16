@@ -1,49 +1,89 @@
 {
-    "jobs": [
-      {
-        "id": 1,
-        "title": "Desarrollador Frontend",
-        "description": "Buscamos un desarrollador con experiencia en React.",
-        "vertical": "Tecnología",
-        "location": "Santiago",
-        "workMode": "Hybrid",
-        "jobType": "Part-time"
-      },
-      {
-        "id": 2,
-        "title": "Analista de Datos",
-        "description": "Se requiere analista con experiencia en SQL y Python.",
-        "vertical": "Tecnología",
-        "location": "Ciudad de México",
-        "workMode": "Remote",
-        "jobType": "Full-time"
-      },
-      {
-        "id": 3,
-        "title": "Desarrollador Backend",
-        "description": "We are Raven, a unique blend of consulting, creative and technology capabilities united with a single focus: We ideate, build, and launch new value propositions that materialize our clients' potential. Our unique approach underpins the creation of emerging propositions capable of generating or capturing new value.\n We untap New Horizons. In a world that faces unprecedented challenges both from a business and market dynamics, with the increasing demand of an evolving customer and collaborator, we are the wingman of our clients to cope with their growth challenges. \n Just for a Few. We support leaders and market creators to innovate commercial disruptions and accelerate growth, combining strategy, design, innovation, and technology. Many organizations preach the same promise, but only a few delivers on it. We are among those. \n Global Reach. Since our inception, we have developed projects with top-tier organizations throughout Latin America and Europe. We are currently expanding beyond. \n We are not a consulting Company. We work differently from traditional consultants. We are not another consulting boutique, nor we want to be. We are fast and agile as a start-up, but precise and narrow focus on delivering value to our clients.  \n For you. We support your professional and personal development. We provide freedom to develop and a unique work environment that rewards each member of our team professionally and personally. Our Verticals. We organize across four business lines: Business, Experience, Growth and Tech. These business lines create a seamless and yet synergetic value proposition for our clients. We Think to Design. We build to Sell. This is what we do, we conceive unique value propositions that then we take to market.",
-        "vertical": "Tecnología",
-        "location": "Santiago",
-        "workMode": "Hybrid",
-        "jobType": "Full-time"
-      },
-      {
-        "id": 4,
-        "title": "Data Science JR",
-        "description": "Se requiere analista con experiencia en SQL y Python.",
-        "vertical": "Growth",
-        "location": "Ciudad de México",
-        "workMode": "Remote",
-        "jobType": "Full-time"
-      },
-      {
-        "id": 5,
-        "title": "Talent Pool Wings",
-        "description": "Se requiere analista con experiencia en CM, UX/UI",
-        "vertical": "Wings",
-        "location": "Santiago",
-        "workMode": "Remote",
-        "jobType": "Full-time"
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Desarrollador Frontend",
+      "vertical": "Tecnología",
+      "location": "Santiago",
+      "workMode": "Hybrid",
+      "jobType": "Part-time",
+      "description": {
+        "aboutUs": "Buscamos un desarrollador con experiencia en React.",
+        "aboutYou": "Tienes pasión por crear interfaces limpias y funcionales, y disfrutas trabajar en equipo.",
+        "ourWorkPlace": "Ambiente ágil y colaborativo, con enfoque en innovación continua.",
+        "ourBenefits": "Días libres extra, capacitaciones pagadas y trabajo remoto parcial.",
+        "yourRole": "Diseñar y desarrollar componentes reutilizables para nuestras aplicaciones.",
+        "responsibilities": "Escribir código limpio, participar en code reviews, colaborar con el equipo de diseño.",
+        "skillsAndExperience": "Experiencia en React, TypeScript, HTML, CSS y consumo de APIs."
       }
-    ]
+    },
+    {
+      "id": 2,
+      "title": "Analista de Datos",
+      "vertical": "Tecnología",
+      "location": "Ciudad de México",
+      "workMode": "Remote",
+      "jobType": "Full-time",
+      "description": {
+        "aboutUs": "Se requiere analista con experiencia en SQL y Python.",
+        "aboutYou": "Eres curioso por naturaleza y te encanta descubrir patrones en los datos.",
+        "ourWorkPlace": "Totalmente remoto, con reuniones semanales de equipo y ambiente horizontal.",
+        "ourBenefits": "Bono anual, clases de inglés y días de salud mental.",
+        "yourRole": "Transformar datos en insights para apoyar la toma de decisiones.",
+        "responsibilities": "Crear dashboards, mantener bases de datos limpias, y trabajar con stakeholders.",
+        "skillsAndExperience": "Dominio de SQL, Python, y herramientas como Power BI o Tableau."
+      }
+    },
+    {
+      "id": 3,
+      "title": "Desarrollador Backend",
+      "vertical": "Tecnología",
+      "location": "Santiago",
+      "workMode": "Hybrid",
+      "jobType": "Full-time",
+      "description": {
+        "aboutUs": "We are Raven, a unique blend of consulting, creative and technology capabilities united with a single focus: We ideate, build, and launch new value propositions that materialize our clients' potential.",
+        "aboutYou": "Tienes experiencia en backend y disfrutas construir soluciones escalables.",
+        "ourWorkPlace": "Oficinas modernas en Santiago y posibilidad de trabajo remoto parcial.",
+        "ourBenefits": "Seguro médico, capacitaciones técnicas y snacks ilimitados.",
+        "yourRole": "Desarrollar y mantener servicios backend robustos.",
+        "responsibilities": "Diseñar APIs, colaborar con frontend y garantizar la calidad del código.",
+        "skillsAndExperience": "Experiencia en Node.js, bases de datos SQL y arquitectura RESTful."
+      }
+    },
+    {
+      "id": 4,
+      "title": "Data Science JR",
+      "vertical": "Growth",
+      "location": "Ciudad de México",
+      "workMode": "Remote",
+      "jobType": "Full-time",
+      "description": {
+        "aboutUs": "Se requiere analista con experiencia en SQL y Python.",
+        "aboutYou": "Te encanta experimentar con datos y probar modelos predictivos.",
+        "ourWorkPlace": "Remoto con sesiones virtuales de equipo y apoyo constante.",
+        "ourBenefits": "Licencia de software, acceso a cursos online y horario flexible.",
+        "yourRole": "Apoyar al equipo de ciencia de datos en la exploración de nuevas oportunidades.",
+        "responsibilities": "Preprocesar datos, evaluar modelos y documentar hallazgos.",
+        "skillsAndExperience": "Conocimiento de Python, Pandas, SQL y fundamentos de machine learning."
+      }
+    },
+    {
+      "id": 5,
+      "title": "Talent Pool Wings",
+      "vertical": "Wings",
+      "location": "Santiago",
+      "workMode": "Remote",
+      "jobType": "Full-time",
+      "description": {
+        "aboutUs": "Se requiere analista con experiencia en CM, UX/UI.",
+        "aboutYou": "Tienes una mirada estratégica y creativa, y sabes comunicar con claridad.",
+        "ourWorkPlace": "Trabajo remoto 100% con encuentros virtuales periódicos.",
+        "ourBenefits": "Bono por desempeño, presupuesto anual para libros/cursos y ambiente inclusivo.",
+        "yourRole": "Apoyar procesos de selección y mejorar la experiencia del talento.",
+        "responsibilities": "Entrevistar candidatos, actualizar bases de datos y coordinar con líderes.",
+        "skillsAndExperience": "Conocimiento en gestión de talento, habilidades de comunicación y herramientas como Notion y Figma."
+      }
+    }
+  ]
 }
