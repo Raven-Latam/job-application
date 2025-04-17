@@ -24,7 +24,7 @@ const JobApplicationForm = ({ id }: Props) => {
   useEffect(() => {
     if (id) {
       getJobOffers().then((data) => {
-        const found = data.find((j) => j.id === Number(id));
+        const found = data.find((j: Job) => j.id === Number(id));
         setJob(found || null);
       });
     }

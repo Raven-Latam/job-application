@@ -16,7 +16,7 @@ const JobDetail = ({ id }: Props) => {
   useEffect(() => {
     if (id) {
       getJobOffers().then((data) => {
-        const foundJob = data.find((j) => Number(j.id) === Number(id)); 
+        const foundJob = data.find((j: Job) => j.id === Number(id)); 
         setJob(foundJob || null);
       });
     }
