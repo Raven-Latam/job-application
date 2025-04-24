@@ -1,12 +1,12 @@
 import { Links } from '@/constants/links/links';
 
-export const DEFAULT_IMAGE_PATH = '';
+export const DEFAULT_IMAGE_PATH = '/raven-logo.png'; // Puede ser tu logo o una imagen OG
 
 export default {
   index: {
-    title: 'title',
-    description: 'descripion_seo',
+    title: 'Raven App | Encuentra tu próximo trabajo',
+    description: 'Explora oportunidades laborales por categoría, ubicación y vertical. Postula directamente desde nuestra plataforma.',
     pathname: Links.HOME,
-    imagePath: '/urlimagenlogo.jpg',
+    imagePath: DEFAULT_IMAGE_PATH,
   },
 };
