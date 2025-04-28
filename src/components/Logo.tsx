@@ -7,7 +7,7 @@ const Logo = () => {
       src="/raven-logo.png"
       alt="Logo de Raven"
       width={150}
-      height={60}
+      height={50.26}
     />
   );
 };
