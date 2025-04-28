@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { getJobOffers } from '../services/api';
 import { Job } from '../types/job';
 import Logo from './Logo';
+import Image from 'next/image'
 
 const JobList = () => {
   const [jobs, setJobs] = useState<Job[]>([]);
@@ -117,7 +118,7 @@ const JobList = () => {
       {Object.entries(groupedJobs).map(([vertical, jobs]) => (
         <div key={vertical} className='vertical-margin'>
           <h3 className="title-vertical">
-            <img src={verticalIcons[vertical]} alt={`Icono de ${vertical}`} className='vertical-icon' />
+            <Image src={verticalIcons[vertical]!} alt={`Icono de ${vertical}`} className='vertical-icon' width={24} height={24}/>
             {vertical}
           </h3>
 

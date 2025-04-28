@@ -1,11 +1,13 @@
 import React from 'react';
+import Image from 'next/image';
 
 const Logo = () => {
   return (
-    <img
+    <Image
       src="/raven-logo.png"
       alt="Logo de Raven"
-      style={{ width: '150px' }}
+      width={150}
+      height={60}
     />
   );
 };

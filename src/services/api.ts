@@ -9,9 +9,10 @@ export const getJobOffers = async (): Promise<Job[]> => {
 // usando el db.json sin API
 
 export const getJobOffers = async () => {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+  //const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
-  const res = await fetch(`${baseUrl}/api/jobs`);
+  const res = await fetch('/db.json');
   const data = await res.json();
-  return data;
+  console.log('DATA FETCHED', data);
+  return data.jobs;
 };
