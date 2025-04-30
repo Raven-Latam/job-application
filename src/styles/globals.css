@@ -24,7 +24,7 @@
     padding: 10px 15px;
     font-family: var(--font-space-grotesk), sans-serif;
     font-size: 14px;
-    font-weight: normal;
+    font-weight: bold;
     text-transform: uppercase;
     border-radius: 8px;
     cursor: pointer;
@@ -48,6 +48,8 @@
     font-family: var(--font-space-grotesk), sans-serif;
     text-transform: uppercase;
     border: none;
+    font-weight: 900;
+    padding: 10px 20px;
   }
 
 h3.title-vertical {
