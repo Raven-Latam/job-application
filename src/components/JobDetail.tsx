@@ -42,7 +42,7 @@ const JobDetail = ({ id }: Props) => {
   };
 
   if (!job) {
-    return <div>Cargando trabajo...</div>;
+    return <div>Loading works...</div>;
   }
 
   // Solo format aboutUs
@@ -78,13 +78,13 @@ const JobDetail = ({ id }: Props) => {
         <h2 className="job-title">Our benefits</h2>
         <p className="job-meta">{job.description?.ourBenefits}</p>
 
-        <h2 className="job-title">Tu rol</h2>
+        <h2 className="job-title">The Job</h2>
         <p className="job-meta">{job.description?.yourRole}</p>
 
-        <h2 className="job-title">Responsabilidades</h2>
+        <h2 className="job-title">Responsibilities</h2>
         <p className="job-meta">{job.description?.responsibilities}</p>
 
-        <h2 className="job-title">Habilidades y experiencia</h2>
+        <h2 className="job-title">Skills and Expirience</h2>
         <p className="job-meta">{job.description?.skillsAndExperience}</p>
       </div>
     </div>

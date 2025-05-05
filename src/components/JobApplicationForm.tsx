@@ -17,7 +17,10 @@ const JobApplicationForm = ({ id }: Props) => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [currentLocation, setCurrentLocation] = useState('');
-  const [currentCompany, setCurrentCompany] = useState('');
+  const [expectedSalary, setExpectedSalary] = useState('');
+  const [portfolio, setPortfolio] = useState('');
+  const [github, setGithub] = useState('');
+  const [linkedin, setLinkedin] = useState('');
 
   const locations = ['Santiago', 'Buenos Aires', 'Ciudad de México', 'Madrid'];
 
@@ -43,7 +46,10 @@ const JobApplicationForm = ({ id }: Props) => {
     formData.append('email', email);
     formData.append('phone', phone);
     formData.append('currentLocation', currentLocation);
-    formData.append('currentCompany', currentCompany);
+    formData.append('expectedSalary', expectedSalary);
+    formData.append('linkedin', linkedin);
+    formData.append('portfolio', portfolio);
+    formData.append('github', github);
 
     fetch(`/api/jobs/${id}/apply`, {
       method: 'POST',
@@ -98,7 +104,7 @@ const JobApplicationForm = ({ id }: Props) => {
       <form onSubmit={handleSubmit}>
         <div className='margin-inputs'>
           <label htmlFor="location" className="form-title">
-            ¿A qué ubicación estás aplicando?
+            Which location are you applying for?
           </label>
           <select
             id="location"
@@ -107,7 +113,7 @@ const JobApplicationForm = ({ id }: Props) => {
             required
             className='inputs-form'
           >
-            <option value="">Selecciona una ubicación</option>
+            <option value="">Select a location</option>
             {locations.map((loc) => (
               <option key={loc} value={loc}>
                 {loc}
@@ -117,7 +123,7 @@ const JobApplicationForm = ({ id }: Props) => {
         </div>
         <div className='margin-inputs'>
           <label htmlFor="resume" className="form-title">
-            Currículum / CV
+            Resume / CV
           </label>
 
           <input
@@ -133,17 +139,17 @@ const JobApplicationForm = ({ id }: Props) => {
             htmlFor="resume"
             className='label-file'
           >
-            📎 Subir archivo
+            📎 Upload file
           </label>
 
           <span className='file-alert'>
-            {selectedFileName || 'Sin archivos seleccionados'}
+            {selectedFileName || 'No file selected'}
           </span>
         </div>
 
         <div className='margin-inputs'>
           <label htmlFor="fullName" className="form-title">
-            Nombre completo
+            Full Name
           </label>
           <input
             type="text"
@@ -169,7 +175,7 @@ const JobApplicationForm = ({ id }: Props) => {
         </div>
         <div className='margin-inputs'>
           <label htmlFor="phone" className="form-title">
-            Teléfono
+            Phone Number
           </label>
           <input
             type="tel"
@@ -182,7 +188,7 @@ const JobApplicationForm = ({ id }: Props) => {
         </div>
         <div className='margin-inputs'>
           <label htmlFor="currentLocation" className="form-title">
-            Ubicación actual
+            Current location
           </label>
           <input
             type="text"
@@ -194,14 +200,50 @@ const JobApplicationForm = ({ id }: Props) => {
           />
         </div>
         <div className='margin-inputs'>
-          <label htmlFor="currentCompany" className="form-title">
-            Compañía actual
+          <label htmlFor="expectedSalary" className="form-title">
+            Expected Salary
           </label>
           <input
             type="text"
-            id="currentCompany"
-            value={currentCompany}
-            onChange={(e) => setCurrentCompany(e.target.value)}
+            id="expectedSalary"
+            value={expectedSalary}
+            onChange={(e) => setExpectedSalary(e.target.value)}
+            className='inputs-form'
+          />
+        </div>
+        <div className='margin-inputs'>
+          <label htmlFor="linkedin" className="form-title">
+            LinkedIn
+          </label>
+          <input
+            type="text"
+            id="linkedin"
+            value={linkedin}
+            onChange={(e) => setLinkedin(e.target.value)}
+            className='inputs-form'
+          />
+        </div>
+        <div className='margin-inputs'>
+          <label htmlFor="portfolio" className="form-title">
+            Portfolio
+          </label>
+          <input
+            type="text"
+            id="portfolio"
+            value={portfolio}
+            onChange={(e) => setPortfolio(e.target.value)}
+            className='inputs-form'
+          />
+        </div>
+        <div className='margin-inputs'>
+          <label htmlFor="github" className="form-title">
+            GitHub
+          </label>
+          <input
+            type="text"
+            id="github"
+            value={github}
+            onChange={(e) => setGithub(e.target.value)}
             className='inputs-form'
           />
         </div>
@@ -209,7 +251,7 @@ const JobApplicationForm = ({ id }: Props) => {
           type="submit"
           className={getButtonClassName()}
         >
-          Enviar aplicación
+          SUBMIT APPLICATION
         </button>
       </form>
     </div>

@@ -83,34 +83,34 @@ const JobList = () => {
       {/* Filtros */}
       <div className="filters-container" >
         <select name="vertical" value={filters.vertical} onChange={handleFilterChange} className="filter-select">
-          <option value="">Vertical</option>
+          <option value="">Departament</option>
           {getUniqueValues('vertical').map((vertical) => (
             <option key={vertical} value={vertical}>{vertical}</option>
           ))}
         </select>
 
         <select name="location" value={filters.location} onChange={handleFilterChange} className="filter-select">
-          <option value="">Ubicación</option>
+          <option value="">Location</option>
           {getUniqueValues('location').map((location) => (
             <option key={location} value={location}>{location}</option>
           ))}
         </select>
 
         <select name="workMode" value={filters.workMode} onChange={handleFilterChange} className="filter-select">
-          <option value="">Modalidad</option>
+          <option value="">Work Mode</option>
           {getUniqueValues('workMode').map((workMode) => (
             <option key={workMode} value={workMode}>{workMode}</option>
           ))}
         </select>
 
         <select name="jobType" value={filters.jobType} onChange={handleFilterChange} className="filter-select">
-          <option value="">Tipo</option>
+          <option value="">Job Type</option>
           {getUniqueValues('jobType').map((jobType) => (
             <option key={jobType} value={jobType}>{jobType}</option>
           ))}
         </select>
         <button onClick={handleClearFilters} className='clear-filter'>
-          Borrar filtros
+          Clear Filters
         </button>
       </div>
 
