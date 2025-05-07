@@ -13,11 +13,13 @@ const JobApplicationForm = ({ id }: Props) => {
   const [job, setJob] = useState<Job | null>(null);
   const [location, setLocation] = useState('');
   const [resume, setResume] = useState<File | null>(null);
-  const [fullName, setFullName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [currentLocation, setCurrentLocation] = useState('');
   const [expectedSalary, setExpectedSalary] = useState('');
+  const [currency, setCurrency] = useState('CLP');
   const [portfolio, setPortfolio] = useState('');
   const [github, setGithub] = useState('');
   const [linkedin, setLinkedin] = useState('');
@@ -42,11 +44,13 @@ const JobApplicationForm = ({ id }: Props) => {
     if (resume) {
       formData.append('resume', resume);
     }
-    formData.append('fullName', fullName);
+    formData.append('firstName', firstName);
+    formData.append('lastName', lastName);
     formData.append('email', email);
     formData.append('phone', phone);
     formData.append('currentLocation', currentLocation);
     formData.append('expectedSalary', expectedSalary);
+    formData.append('currency', currency);
     formData.append('linkedin', linkedin);
     formData.append('portfolio', portfolio);
     formData.append('github', github);
@@ -147,19 +151,36 @@ const JobApplicationForm = ({ id }: Props) => {
           </span>
         </div>
 
-        <div className='margin-inputs'>
-          <label htmlFor="fullName" className="form-title">
-            Full Name
-          </label>
-          <input
-            type="text"
-            id="fullName"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            required
-            className='inputs-form'
-          />
+        <div className="margin-inputs name-fields-container">
+          <div className="input-half">
+            <label htmlFor="firstName" className="form-title">
+              First Name
+            </label>
+            <input
+              type="text"
+              id="firstName"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+              className='inputs-form'
+            />
+          </div>
+          <div className="input-half">
+            <label htmlFor="lastName" className="form-title">
+              Last Name
+            </label>
+            <input
+              type="text"
+              id="lastName"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              required
+              className='inputs-form'
+            />
+          </div>
         </div>
+
+
         <div className='margin-inputs'>
           <label htmlFor="email" className="form-title">
             Email
@@ -203,13 +224,27 @@ const JobApplicationForm = ({ id }: Props) => {
           <label htmlFor="expectedSalary" className="form-title">
             Expected Salary
           </label>
-          <input
-            type="text"
-            id="expectedSalary"
-            value={expectedSalary}
-            onChange={(e) => setExpectedSalary(e.target.value)}
-            className='inputs-form'
-          />
+          <div className="salary-currency-container">
+            <select
+              id="currency"
+              value={currency}
+              onChange={(e) => setCurrency(e.target.value)}
+              className="currency-select"
+            >
+              <option value="CLP">CLP</option>
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="MXN">MXN</option>
+            </select>
+            <input
+              type="text"
+              id="expectedSalary"
+              value={expectedSalary}
+              onChange={(e) => setExpectedSalary(e.target.value)}
+              className='inputs-form'
+            />
+          </div>
+          
         </div>
         <div className='margin-inputs'>
           <label htmlFor="linkedin" className="form-title">

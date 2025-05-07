@@ -212,3 +212,31 @@ span.file-alert {
 .vertical-margin {
   margin-bottom: 40px;
 }
+.salary-currency-container {
+  display: flex;
+  gap: 10px;
+}
+
+.salary-currency-container select {
+  flex: 0 0 20%;
+}
+
+.salary-currency-container input {
+  flex: 1;
+}
+
+.currency-select {
+  padding: 10px 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  color: black;
+}
+
+.name-fields-container {
+  display: flex;
+  gap: 10px; /* espaciado entre los campos */
+}
+
+.input-half {
+  flex: 1;
+}

@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { Job } from '../types/job';
 import { getJobOffers } from '../services/api';
 import Logo from './Logo';
+import { JOB_DEFAULTS } from '../constants/jobDefaults';
 
 type Props = {
   id: string;
@@ -46,7 +47,9 @@ const JobDetail = ({ id }: Props) => {
   }
 
   // Solo format aboutUs
-  const formattedAboutUs = job.description?.aboutUs?.replace(/\n/g, '<br />');
+  const formattedAboutUs = JOB_DEFAULTS.aboutUs.replace(/\n/g, '<br />');
+  const formattedAboutYou = JOB_DEFAULTS.aboutYou.replace(/\n/g, '<br />');
+  const formattedOurWorkPlace = JOB_DEFAULTS.ourWorkPlace.replace(/\n/g, '<br />');
 
   return (
     <div className='job-container'>
@@ -70,13 +73,16 @@ const JobDetail = ({ id }: Props) => {
         />
 
         <h2 className="job-title">About you</h2>
-        <p className="job-meta">{job.description?.aboutYou}</p>
+        <p 
+          className="job-meta"
+          dangerouslySetInnerHTML={{ __html: formattedAboutYou || '' }}
+        />
 
         <h2 className="job-title">Our work place</h2>
-        <p className="job-meta">{job.description?.ourWorkPlace}</p>
-
-        <h2 className="job-title">Our benefits</h2>
-        <p className="job-meta">{job.description?.ourBenefits}</p>
+        <p 
+          className="job-meta"
+          dangerouslySetInnerHTML={{ __html: formattedOurWorkPlace || '' }}
+        />
 
         <h2 className="job-title">The Job</h2>
         <p className="job-meta">{job.description?.yourRole}</p>
@@ -86,6 +92,13 @@ const JobDetail = ({ id }: Props) => {
 
         <h2 className="job-title">Skills and Expirience</h2>
         <p className="job-meta">{job.description?.skillsAndExperience}</p>
+
+        {job.description?.ourBenefits && (
+          <>
+            <h2 className="job-title">Our benefits</h2>
+            <p className="job-meta">{job.description.ourBenefits}</p>
+          </>
+        )}
       </div>
     </div>
   );
