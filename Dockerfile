@@ -5,7 +5,7 @@ FROM node:18
 WORKDIR /usr/src/app
 
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
-COPY package*.json ./
+#V COPY package*.json ./
 
 # Install app dependencies
 RUN npm install
@@ -14,10 +14,11 @@ RUN npm install
 COPY . .
 
 # Creates a "dist" folder with the production build
-RUN npm run build
+# RUN npm run build
 
 # Expose the port on which the app will run
-EXPOSE 8080
+EXPOSE 3001
 
 # Start the server u
-CMD ["npm", "run", "start:dev"]
+#CMD ["npm", "run", "start:dev"]
+RUN npm run dev
