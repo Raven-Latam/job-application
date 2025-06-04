@@ -11,7 +11,6 @@ type Props = {
 const JobApplicationForm = ({ id }: Props) => {
 
   const [job, setJob] = useState<Job | null>(null);
-  const [location, setLocation] = useState('');
   const [resume, setResume] = useState<File | null>(null);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -19,51 +18,69 @@ const JobApplicationForm = ({ id }: Props) => {
   const [phone, setPhone] = useState('');
   const [currentLocation, setCurrentLocation] = useState('');
   const [expectedSalary, setExpectedSalary] = useState('');
-  const [currency, setCurrency] = useState('CLP');
+  const [currency, setCurrency] = useState('');
   const [portfolio, setPortfolio] = useState('');
   const [github, setGithub] = useState('');
   const [linkedin, setLinkedin] = useState('');
+  
+  type Country = { code: string; name: string };
+  type Currency = { code: string; name: string };
 
-  const locations = ['Santiago', 'Buenos Aires', 'Ciudad de México', 'Madrid'];
+  const [countries, setCountries] = useState<Country[]>([]);
+  const [currencies, setCurrencies] = useState<Currency[]>([]);
 
   useEffect(() => {
     if (id) {
       getJobOffers().then((data) => {
-        const found = data.find((j: Job) => j.id === Number(id));
+        const found = data.jobs.find((j: Job) => j.id === Number(id));
         setJob(found || null);
+        setCountries(data.countries || []);
+        setCurrencies(data.currencies || []);
       });
     }
   }, [id]);  
   
   const [selectedFileName, setSelectedFileName] = useState('');
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+  
     const formData = new FormData();
-    formData.append('location', location);
-    if (resume) {
-      formData.append('resume', resume);
-    }
-    formData.append('firstName', firstName);
-    formData.append('lastName', lastName);
+    formData.append('nombre', firstName);
+    formData.append('apellidos', lastName);
+    formData.append('pais_residencia', currentLocation);
     formData.append('email', email);
-    formData.append('phone', phone);
-    formData.append('currentLocation', currentLocation);
-    formData.append('expectedSalary', expectedSalary);
-    formData.append('currency', currency);
-    formData.append('linkedin', linkedin);
-    formData.append('portfolio', portfolio);
-    formData.append('github', github);
+    formData.append('telefono', phone);
+    formData.append('pretencion_renta', expectedSalary);
+    formData.append('moneda_pretencion_renta', currency);
+    if (resume) {
+      formData.append('curriculum', resume);
+    }
+    if (linkedin) formData.append('redes_sociales[linkedin]', linkedin);
+    if (portfolio) formData.append('redes_sociales[portafolio]', portfolio);
+    if (github) formData.append('redes_sociales[github]', github);
 
-    fetch(`/api/jobs/${id}/apply`, {
-      method: 'POST',
-      body: formData,
-    })
-      .then((response) => response.json())
-      .catch((error) => {
-        console.error('Error al enviar la aplicación:', error);
+    try {
+      const response = await fetch(`https://dev.bo.raven.inc/api/recruiter/offerings/${id}`, {
+        method: 'POST',
+        headers: {
+          'X-Raven-Api-Token': process.env.NEXT_PUBLIC_RAVEN_API_TOKEN || '',
+        },
+        body: formData
       });
-  };
+  
+      const result = await response.json();
+
+      if (response.status === 201) {
+        alert('✔️ Postulación enviada con éxito!');
+      } else {
+        alert(`❌ Error del servidor: ${response.status} - ${result.message || 'Sin mensaje'}`);
+      }
+    } catch (error) {
+      console.error('❌ Error en la red o en el fetch:', error);
+      alert('❌ Ocurrió un error en la red al enviar la postulación.');
+    }
+  };  
 
   const handleResumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
@@ -79,16 +96,16 @@ const JobApplicationForm = ({ id }: Props) => {
     if (!job) return "button-send";
 
     switch (job.vertical) {
-      case 'Tecnología':
-        return 'button-send hover-tecnología';
-      case 'Growth':
+      case 'Technology & Operations':
+        return 'button-send hover-technology_&_operations';
+      case 'Growth & Analytics':
         return 'button-send hover-growth';
-      case 'Wings':
+      case 'Manta Agency':
         return 'button-send hover-wings';
-      case 'Experience':
-        return 'button-send hover-experience';
-      case 'Business':
-        return 'button-send hover-business';
+      case 'Product Design & Experience':
+        return 'button-send hover-product_design_&_experience';
+      case 'Business & Design':
+        return 'button-send hover-business_&_design';
       default:
         return 'button-send';
     }
@@ -100,57 +117,12 @@ const JobApplicationForm = ({ id }: Props) => {
       {job && ( 
         <>
           <h1 className="job-title">{job.title}</h1>
-          <p className="job-meta">{job.location}</p>
+          <p className="job-meta">{job.locations?.join(' | ')}</p>
           <p className="job-meta">{job.workMode} | {job.jobType}</p>
           <hr className='line' />
         </>
       )}
       <form onSubmit={handleSubmit}>
-        <div className='margin-inputs'>
-          <label htmlFor="location" className="form-title">
-            Which location are you applying for?
-          </label>
-          <select
-            id="location"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            required
-            className='inputs-form'
-          >
-            <option value="">Select a location</option>
-            {locations.map((loc) => (
-              <option key={loc} value={loc}>
-                {loc}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className='margin-inputs'>
-          <label htmlFor="resume" className="form-title">
-            Resume / CV
-          </label>
-
-          <input
-            type="file"
-            id="resume"
-            onChange={handleResumeChange}
-            accept=".pdf,.doc,.docx"
-            required
-            className='file-hide'
-          />
-
-          <label
-            htmlFor="resume"
-            className='label-file'
-          >
-            📎 Upload file
-          </label>
-
-          <span className='file-alert'>
-            {selectedFileName || 'No file selected'}
-          </span>
-        </div>
-
         <div className="margin-inputs name-fields-container">
           <div className="input-half">
             <label htmlFor="firstName" className="form-title">
@@ -180,6 +152,31 @@ const JobApplicationForm = ({ id }: Props) => {
           </div>
         </div>
 
+        <div className='margin-inputs'>
+          <label htmlFor="resume" className="form-title">
+            Resume / CV
+          </label>
+
+          <input
+            type="file"
+            id="resume"
+            onChange={handleResumeChange}
+            accept=".pdf,.doc,.docx"
+            required
+            className='file-hide'
+          />
+
+          <label
+            htmlFor="resume"
+            className='label-file'
+          >
+            📎 Upload file
+          </label>
+
+          <span className='file-alert'>
+            {selectedFileName || 'No file selected'}
+          </span>
+        </div>
 
         <div className='margin-inputs'>
           <label htmlFor="email" className="form-title">
@@ -211,31 +208,42 @@ const JobApplicationForm = ({ id }: Props) => {
           <label htmlFor="currentLocation" className="form-title">
             Current location
           </label>
-          <input
-            type="text"
+          <select
             id="currentLocation"
             value={currentLocation}
             onChange={(e) => setCurrentLocation(e.target.value)}
             required
             className='inputs-form'
-          />
+          >
+            <option value="">Select a country</option>
+            {countries.map((country) => (
+              <option key={country.code} value={country.code}>
+                {country.name}
+              </option>
+            ))}
+          </select>
+
         </div>
         <div className='margin-inputs'>
           <label htmlFor="expectedSalary" className="form-title">
             Expected Salary
           </label>
           <div className="salary-currency-container">
-            <select
-              id="currency"
-              value={currency}
-              onChange={(e) => setCurrency(e.target.value)}
-              className="currency-select"
-            >
-              <option value="CLP">CLP</option>
-              <option value="USD">USD</option>
-              <option value="EUR">EUR</option>
-              <option value="MXN">MXN</option>
-            </select>
+          <select
+            id="currency"
+            value={currency}
+            onChange={(e) => setCurrency(e.target.value)}
+            className="currency-select"
+            required
+          >
+            <option value="">Select currency</option>
+            {currencies.map((cur) => (
+              <option key={cur.code} value={cur.code}>
+                {cur.name}
+              </option>
+            ))}
+          </select>
+
             <input
               type="text"
               id="expectedSalary"
@@ -244,8 +252,8 @@ const JobApplicationForm = ({ id }: Props) => {
               className='inputs-form'
             />
           </div>
-          
         </div>
+
         <div className='margin-inputs'>
           <label htmlFor="linkedin" className="form-title">
             LinkedIn

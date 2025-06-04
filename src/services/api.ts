@@ -1,18 +1,20 @@
-/* import axios from 'axios';
-import { Job } from '@/types/job';
-usando el db.json como API
-export const getJobOffers = async (): Promise<Job[]> => {
-  const response = await axios.get<Job[]>('http://localhost:5001/jobs');
-  return response.data;
-};
-*/
-// usando el db.json sin API
-
+const API_URL = 'https://dev.bo.raven.inc/api/recruiter/offerings';
 export const getJobOffers = async () => {
-  //const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+  try {
+    const res = await fetch(API_URL, {
+      headers: {
+        'X-Raven-Api-Token': process.env.NEXT_PUBLIC_RAVEN_API_TOKEN || '',
+      },
+    });
 
-  const res = await fetch('/db.json');
-  const data = await res.json();
-  console.log('DATA FETCHED', data);
-  return data.jobs;
+    if (!res.ok) {
+      throw new Error(`Error en la API: ${res.status}`);
+    }
+
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching job offers:', error);
+    return { jobs: [], countries: [], currencies: [] };
+  }
 };

@@ -72,15 +72,15 @@ h2.job-title {
 }
 p.job-title {
   font-family: var(--font-manrope), sans-serif;
-  font-weight: 700; /* Bold */
+  font-weight: 700; 
   font-size: 18px;
   margin-bottom: 5px;
 }
 
 p.job-meta {
   font-family: var(--font-manrope), sans-serif;
-  font-weight: 400; /* Regular */
-  color: #666;
+  font-weight: 400; 
+  color: #666!important;
   margin-bottom: 5px;
 }
 
@@ -95,24 +95,24 @@ p.job-meta {
   border: none;
 }
 /* Hover por vertical */
-.hover-tecnología:hover {
+.hover-technology_\&_operations:hover {
   background-color: #FF5100;
 }
 
-.hover-growth:hover {
+.hover-growth_\&_analytics:hover {
   background-color: #00DBFF;
 }
 
-.hover-wings:hover {
+.hover-manta_agency:hover {
   background-color: #FFF30B;
   color: black; /* color negro porque el fondo es muy claro */
 }
 
-.hover-experience:hover {
+.hover-product_design_\&_experience:hover {
   background-color: #FF00D5;
 }
 
-.hover-business:hover {
+.hover-business_\&_design:hover {
   background-color: #00ff16;
   color: black; /* color negro porque el fondo es muy claro */
 }
@@ -160,27 +160,17 @@ span.file-alert {
 .margin-inputs {
   margin-bottom: 15px;
 }
-
-/*.inputs-form { 
-  width: 100%; 
-  height: 40px;
-  padding: 10px 0px;
-  border-radius: 5px; 
-  border: 1px solid #ccc;
-  color: black;
-  text-decoration: none;
-}*/
 .inputs-form {
   width: 100%;
-  min-height: 40px; /* min-height en vez de height fija */
-  padding: 8px 10px; /* padding más parejo */
+  min-height: 40px;
+  padding: 8px 10px; 
   border-radius: 5px;
   border: 1px solid #ccc;
   color: black;
   background-color: white;
   font-size: 16px;
-  box-sizing: border-box; /* MUY importante para controlar padding/border */
-  appearance: none; /* quita estilos por defecto de select */
+  box-sizing: border-box; 
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
@@ -234,7 +224,7 @@ span.file-alert {
 
 .name-fields-container {
   display: flex;
-  gap: 10px; /* espaciado entre los campos */
+  gap: 10px;
 }
 
 .input-half {

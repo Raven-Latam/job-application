@@ -8,10 +8,10 @@ export interface Job {
       ourWorkPlace: string;
       ourBenefits: string;
       yourRole: string;
-      responsibilities: string;
+      responsabilities: string;
       skillsAndExperience: string;
     };
-    location: string;
+    locations: string[];
     workMode: string;
     jobType: string;
   }

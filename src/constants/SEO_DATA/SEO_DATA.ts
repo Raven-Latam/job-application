@@ -1,6 +1,6 @@
 import { Links } from '@/constants/links/links';
 
-export const DEFAULT_IMAGE_PATH = '/raven-logo.png'; // Puede ser tu logo o una imagen OG
+export const DEFAULT_IMAGE_PATH = '/raven-logo.png';
 
 export default {
   index: {

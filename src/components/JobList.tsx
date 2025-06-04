@@ -19,8 +19,8 @@ const JobList = () => {
 
   useEffect(() => {
     getJobOffers().then((data) => {
-      setJobs(data);
-      setFilteredJobs(data);
+      setJobs(data.jobs);
+      setFilteredJobs(data.jobs);
     });
   }, []);
 
@@ -31,9 +31,9 @@ const JobList = () => {
     setFilters(updatedFilters);
 
     // Filtrar trabajos en tiempo real
-    const filtered = jobs.filter((job) => 
+    const filtered = jobs.filter((job) =>
       (updatedFilters.vertical === '' || job.vertical === updatedFilters.vertical) &&
-      (updatedFilters.location === '' || job.location === updatedFilters.location) &&
+      (updatedFilters.location === '' || job.locations.includes(updatedFilters.location)) &&
       (updatedFilters.workMode === '' || job.workMode === updatedFilters.workMode) &&
       (updatedFilters.jobType === '' || job.jobType === updatedFilters.jobType)
     );
@@ -48,33 +48,44 @@ const JobList = () => {
       workMode: '',
       jobType: ''
     });
-  
+
     // Restaurar los trabajos filtrados a todos los trabajos disponibles
     setFilteredJobs(jobs);
   };
-  
+
   // Obtener valores únicos para los filtros
   const getUniqueValues = (key: keyof Job) => {
-    return Array.from(new Set(jobs.map(job => job[key] as string | number)));
+    if (key === 'locations') {
+      const allLocations = jobs.flatMap(job => job.locations);
+      return Array.from(new Set(allLocations)).sort();
+    }
+    return Array.from(new Set(jobs.map(job => job[key] as string | number))).sort();
   };
   
+
+  // Normalizar el nombre de la vertical para usarlo como clave
+  const normalizeVerticalName = (vertical: string) => {
+    return vertical.replace(/ /g, '_');
+  };
+
   // Agrupar trabajos por vertical
   const groupedJobs = filteredJobs.reduce<Record<string, Job[]>>((acc, job) => {
-    if (!acc[job.vertical]) {
-      acc[job.vertical] = [];
+    const normalizedVertical = normalizeVerticalName(job.vertical);
+    if (!acc[normalizedVertical]) {
+      acc[normalizedVertical] = [];
     }
-    (acc[job.vertical] ??= []).push(job);
+    (acc[normalizedVertical] ??= []).push(job);
 
     return acc;
   }, {});
 
   const verticalIcons: Record<string, string> = {
-    Tecnología: '/icons/tech.svg',
-    Growth: '/icons/growth.svg',
-    Wings: '/icons/wings.svg',
-    Experience: '/icons/experience.svg',
-    Business: '/icons/business.svg'
-  };  
+    'Technology_&_Operations': '/icons/tech.svg',
+    'Growth & Analytics': '/icons/growth.svg',
+    'Manta Agency': '/icons/wings.svg',
+    'Product_Design_&_Experience': '/icons/experience.svg',
+    'Business_&_Design': '/icons/business.svg'
+  };
 
   return (
     <div className='job-container'>
@@ -91,7 +102,7 @@ const JobList = () => {
 
         <select name="location" value={filters.location} onChange={handleFilterChange} className="filter-select">
           <option value="">Location</option>
-          {getUniqueValues('location').map((location) => (
+          {getUniqueValues('locations').map((location) => (
             <option key={location} value={location}>{location}</option>
           ))}
         </select>
@@ -115,11 +126,11 @@ const JobList = () => {
       </div>
 
       {/* Mostrar trabajos filtrados */}
-      {Object.entries(groupedJobs).map(([vertical, jobs]) => (
-        <div key={vertical} className='vertical-margin'>
+      {Object.entries(groupedJobs).map(([verticalKey, jobs]) => (
+        <div key={verticalKey} className='vertical-margin'>
           <h3 className="title-vertical">
-            <Image src={verticalIcons[vertical]!} alt={`Icono de ${vertical}`} className='vertical-icon' width={24} height={24}/>
-            {vertical}
+            <Image src={verticalIcons[verticalKey]!} alt={`Icono de ${verticalKey.replace(/_/g, ' ')}`} className='vertical-icon' width={24} height={24}/>
+            {verticalKey.replace(/_/g, ' ')}
           </h3>
 
           <hr className='line' />
@@ -129,11 +140,11 @@ const JobList = () => {
               <div>
                 <p className="job-title">{job.title}</p>
                 <p className="job-meta">{job.workMode} | {job.jobType}</p>
-                <p className="job-meta">{job.location}</p>
+                <p className="job-meta">{job.locations?.join(' | ')}</p>
               </div>
               <Link
                 href={`/jobs/${job.id}`}
-                className={`job-button hover-${vertical.toLowerCase()}`}
+                className={`job-button hover-${verticalKey.toLowerCase()}`}
               >
                 APPLY
               </Link>
