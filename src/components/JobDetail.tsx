@@ -54,7 +54,7 @@ const JobDetail = ({ id }: Props) => {
     return html
       .replace(/<p><br\s*\/?><\/p>/gi, '') // quita <p><br></p>
       .replace(/&nbsp;/gi, ' ')            // reemplaza espacios duros por normales
-      .trim();                             // quita espacios al inicio/final
+      .trim();
   };
   
 
