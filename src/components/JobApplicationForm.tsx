@@ -61,7 +61,7 @@ const JobApplicationForm = ({ id }: Props) => {
     if (github) formData.append('redes_sociales[github]', github);
 
     try {
-      const response = await fetch(`https://dev.bo.raven.inc/api/recruiter/offerings/${id}`, {
+      const response = await fetch(`https://bo.raven.inc/api/recruiter/offerings/${id}`, {
         method: 'POST',
         headers: {
           'X-Raven-Api-Token': process.env.NEXT_PUBLIC_RAVEN_API_TOKEN || '',

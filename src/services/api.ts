@@ -1,4 +1,5 @@
-const API_URL = 'https://dev.bo.raven.inc/api/recruiter/offerings';
+const API_URL = 'https://bo.raven.inc/api/recruiter/offerings';
+console.log(process.env.NEXT_PUBLIC_RAVEN_API_TOKEN);
 export const getJobOffers = async () => {
   try {
     const res = await fetch(API_URL, {
