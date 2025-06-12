@@ -107,7 +107,7 @@ const JobApplicationForm = ({ id }: Props) => {
       case 'Business & Design':
         return 'button-send hover-business_&_design';
       default:
-        return 'button-send';
+        return 'button-send hover-wings';
     }
   };
 

@@ -38,7 +38,7 @@ const JobDetail = ({ id }: Props) => {
       case 'Business & Design':
         return 'job-button hover-business_&_design';
       default:
-        return 'job-button'; 
+        return 'job-button hover-wings'; 
     }
   };
 
