@@ -87,6 +87,11 @@ const JobList = () => {
     'Business_&_Design': '/icons/business.svg'
   };
 
+  const getVerticalIcon = (verticalKey: string) => {
+    const icon = verticalIcons[verticalKey];
+    return icon ? icon : '/icons/wings.svg';
+  };
+
   return (
     <div className='job-container'>
       <Logo />
@@ -129,7 +134,13 @@ const JobList = () => {
       {Object.entries(groupedJobs).map(([verticalKey, jobs]) => (
         <div key={verticalKey} className='vertical-margin'>
           <h3 className="title-vertical">
-            <Image src={verticalIcons[verticalKey] || '/icons/wings.svg'} alt={`Icono de ${verticalKey.replace(/_/g, ' ')}`} className='vertical-icon' width={24} height={24}/>
+            <Image
+              src={getVerticalIcon(verticalKey)}
+              alt={`Icono de ${verticalKey.replace(/_/g, ' ')}`}
+              className='vertical-icon'
+              width={24}
+              height={24}
+            />
             {verticalKey.replace(/_/g, ' ')}
           </h3>
 
