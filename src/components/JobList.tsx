@@ -87,6 +87,21 @@ const JobList = () => {
     'Business_&_Design': '/icons/business.svg'
   };
 
+  const getHoverClass = (verticalKey: string) => {
+    const knownHovers = [
+      'technology_&_operations',
+      'growth_&_analytics',
+      'manta_agency',
+      'product_design_&_experience',
+      'business_&_design'
+    ];
+
+    return knownHovers.includes(verticalKey)
+      ? `hover-${verticalKey}`
+      : 'hover-default';
+  };
+
+
   const getVerticalIcon = (verticalKey: string) => {
     const icon = verticalIcons[verticalKey];
     return icon ? icon : '/icons/wings.svg';
@@ -155,7 +170,7 @@ const JobList = () => {
               </div>
               <Link
                 href={`/jobs/${job.id}`}
-                className={`job-button hover-${verticalKey.toLowerCase()}`}
+                className={`job-button ${getHoverClass(verticalKey.toLowerCase())}`}
               >
                 APPLY
               </Link>

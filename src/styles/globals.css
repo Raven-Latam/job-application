@@ -116,6 +116,11 @@ p.job-meta {
   background-color: #00ff16;
   color: black; /* color negro porque el fondo es muy claro */
 }
+.hover-default:hover {
+  background-color: #FFF30B;
+  color: black;
+}
+
 label.form-title {
   display: block;
   margin-bottom: 5px;
