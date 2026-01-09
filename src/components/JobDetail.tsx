@@ -50,6 +50,8 @@ const JobDetail = ({ id }: Props) => {
   const formattedAboutUs = JOB_DEFAULTS.aboutUs.replace(/\n/g, '<br />');
   const formattedAboutYou = JOB_DEFAULTS.aboutYou.replace(/\n/g, '<br />');
   const formattedOurWorkPlace = JOB_DEFAULTS.ourWorkPlace.replace(/\n/g, '<br />');
+  const formattedLifeInRaven = JOB_DEFAULTS.lifeInRaven.replace(/\n/g, '<br />');
+
   const cleanHTML = (html: string): string => {
     return html
       .replace(/<p><br\s*\/?><\/p>/gi, '') // quita <p><br></p>
@@ -73,22 +75,28 @@ const JobDetail = ({ id }: Props) => {
       <hr className='line' />
 
       <div>
-        <h2 className="job-title">About us</h2>
+        <h2 className="job-title">Sobre Nosotros</h2>
         <p
           className="job-meta"
           dangerouslySetInnerHTML={{ __html: formattedAboutUs || '' }}
         />
 
-        <h2 className="job-title">About you</h2>
+        <h2 className="job-title">Lo que hacemos</h2>
         <p 
           className="job-meta"
           dangerouslySetInnerHTML={{ __html: formattedAboutYou || '' }}
         />
 
-        <h2 className="job-title">Our work place</h2>
+        <h2 className="job-title">Nuestra cultura</h2>
         <p 
           className="job-meta"
           dangerouslySetInnerHTML={{ __html: formattedOurWorkPlace || '' }}
+        />
+
+        <h2 className="job-title">La vida en Raven</h2>
+        <p 
+          className="job-meta"
+          dangerouslySetInnerHTML={{ __html: formattedLifeInRaven || '' }}
         />
 
         <h2 className="job-title">The Job</h2>
